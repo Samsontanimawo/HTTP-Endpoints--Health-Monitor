@@ -10,7 +10,7 @@ https://reqres.in/api/users/1	GET	Availability: 100%
 https://api.thecatapi.com/v1/images/search	GET	Availability: 100%
 https://dog.ceo/api/breeds/image/random	GET	Availability: 100%
 
-
+##################################################################
 
 Down Endpoints		
 https://httpstat.us/404-not-found	GET	Availability: 0%
@@ -19,7 +19,7 @@ https://thisurldoesnotexist.example	GET	Availability: 0%
 https://httpbin.org/status/503	GET	Availability: 0%
 https://nonexistentdomain.xyz	GET	Availability: 0%
 
-
+##################################################################
 Endpoint	Expected Availability	Expected Latency
 https://api.github.com	100%	~100-200ms
 https://www.google.com	100%	~50-150ms
@@ -32,6 +32,7 @@ https://jsonplaceholder.typicode.com/posts	100%	~50-150ms
 https://api.thecatapi.com/v1/images/search	100%	~100-250ms
 https://dog.ceo/api/breeds/image/random	100%	~100-250ms
 
+##################################################################
 Endpoint	Expected Availability	Expected Latency
 https://httpstat.us/500	0%	N/A
 https://httpstat.us/404	0%	N/A
@@ -43,3 +44,67 @@ https://expired.badssl.com	0%	N/A
 https://self-signed.badssl.com	0%	N/A
 https://fetch.com/some/post/endpoint	0%	N/A
 https://www.fetchrewards.com/nonexistentpage	0%	N/A
+
+##################################################################
+More endpoints for testing
+
+Google – https://www.google.com
+GitHub – https://www.github.com
+Wikipedia – https://www.wikipedia.org
+CNN – https://www.cnn.com
+BBC – https://www.bbc.com 
+GitHub API – https://www.githubstatus.com/api/v2/status.json
+Google Cloud Status – https://status.cloud.google.com/incidents.json
+AWS Health Status – https://status.aws.amazon.com
+OpenWeather API – https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY (Replace YOUR_API_KEY with a valid API key)
+Twitter API Status – https://api.twitterstat.us/api/v2/status.json 
+
+##################################################################
+
+🌐 General Websites
+Facebook – https://www.facebook.com
+Twitter – https://www.twitter.com
+LinkedIn – https://www.linkedin.com
+Reddit – https://www.reddit.com
+YouTube – https://www.youtube.com
+
+##################################################################
+
+🔗 Public API Health Endpoints
+CoinGecko API – https://api.coingecko.com/api/v3/ping
+NASA API – https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY (Replace DEMO_KEY with a valid API key)
+JokeAPI – https://v2.jokeapi.dev/joke/Programming
+The Dog API – https://api.thedogapi.com/v1/images/search
+The Cat API – https://api.thecatapi.com/v1/images/search 
+
+##################################################################
+
+🌍 Geo-Location APIs
+ipinfo.io – https://ipinfo.io/json
+ipapi – https://ipapi.co/json/
+GeoNames – http://api.geonames.org/countryInfoJSON?username=demo (Replace demo with your username)
+
+##################################################################
+
+🔒 Secure Websites (HTTPS)
+Slack – https://slack.com
+Dropbox – https://www.dropbox.com
+Stripe – https://stripe.com
+PayPal – https://www.paypal.com
+Gmail – https://mail.google.com 
+
+##################################################################
+
+⚙️ Mock APIs for Testing
+JSONPlaceholder – https://jsonplaceholder.typicode.com/posts
+ReqRes – https://reqres.in/api/users/2
+Mocky – Create a mock endpoint (e.g., https://www.mocky.io/v2/5ec5e9c93d000000b7a5e133)
+
+##################################################################
+
+Use These URLs in Your App to Test Different Scenarios:
+https://www.facebook.com
+https://api.coingecko.com/api/v3/ping
+https://api.thedogapi.com/v1/images/search
+https://www.dropbox.com
+http://api.geonames.org/countryInfoJSON?username=demo
