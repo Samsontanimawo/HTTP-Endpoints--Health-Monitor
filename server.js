@@ -1,6 +1,8 @@
 const express = require('express');
 const axios = require('axios');
 const fs = require('fs');
+const { Parser } = require('json2csv');
+const PDFDocument = require('pdfkit');
 
 const app = express();
 const port = 3000;
@@ -9,7 +11,7 @@ app.use(express.static(__dirname));
 app.use(express.json());
 
 const ENDPOINTS_FILE = 'endpoints.json';
-const CHECK_INTERVAL = 1000; // Check every 10 seconds
+const CHECK_INTERVAL = 1000; // Check every second
 
 // Load saved endpoints from file
 let endpoints = loadEndpoints();
@@ -102,6 +104,50 @@ app.get('/health', (req, res) => {
         return { domain, availability, avgLatency, url };
     });
     res.json(results);
+});
+
+// Route for exporting as CSV
+app.get('/export-csv', (req, res) => {
+    const results = endpoints.map(url => {
+        const domain = new URL(url).hostname;
+        const stats = domainStats[domain] || { total: 0, successful: 0, latencySum: 0 };
+        const availability = stats.total ? Math.round((stats.successful / stats.total) * 100) : 0;
+        const avgLatency = stats.successful ? Math.round(stats.latencySum / stats.successful) : 'N/A';
+        return { domain, availability, avgLatency, url };
+    });
+
+    const csvParser = new Parser();
+    const csv = csvParser.parse(results);
+
+    res.header('Content-Type', 'text/csv');
+    res.attachment('health-status-report.csv');
+    res.send(csv);
+});
+
+// Route for exporting as PDF
+app.get('/export-pdf', (req, res) => {
+    const doc = new PDFDocument();
+    const results = endpoints.map(url => {
+        const domain = new URL(url).hostname;
+        const stats = domainStats[domain] || { total: 0, successful: 0, latencySum: 0 };
+        const availability = stats.total ? Math.round((stats.successful / stats.total) * 100) : 0;
+        const avgLatency = stats.successful ? Math.round(stats.latencySum / stats.successful) : 'N/A';
+        return { domain, availability, avgLatency, url };
+    });
+
+    res.header('Content-Type', 'application/pdf');
+    res.attachment('health-status-report.pdf');
+
+    doc.pipe(res);
+    doc.fontSize(25).text('Health Status Report', { align: 'center' });
+    doc.moveDown();
+
+    results.forEach(site => {
+        doc.text(`Domain: ${site.domain}, Availability: ${site.availability}%, Avg Latency: ${site.avgLatency}ms`);
+        doc.moveDown();
+    });
+
+    doc.end();
 });
 
 // Start monitoring existing endpoints
