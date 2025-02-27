@@ -5,7 +5,7 @@ const { Parser } = require('json2csv');
 const PDFDocument = require('pdfkit');
 
 const app = express();
-const port = 3000;
+
 
 app.use(express.static(__dirname));
 app.use(express.json());
@@ -153,6 +153,9 @@ app.get('/export-pdf', (req, res) => {
 // Start monitoring existing endpoints
 endpoints.forEach(startMonitoring);
 
+const port = process.env.PORT || 3000; // Use Heroku's port
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+
