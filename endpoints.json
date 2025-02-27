@@ -1,0 +1,10 @@
+[
+  "https://sre-quiz-app-d41593b69bb8.herokuapp.com/",
+  "http://localhost:3001/",
+  "https://www.google.com",
+  "https://api.github.com",
+  "https://www.microsoft.com",
+  "https://expired.badssl.com",
+  "https://self-signed.badssl.com",
+  "https://www.reddit.com"
+]
