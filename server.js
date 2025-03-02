@@ -3,9 +3,10 @@ const axios = require('axios');
 const fs = require('fs');
 const { Parser } = require('json2csv');
 const PDFDocument = require('pdfkit');
+const simpleGit = require('simple-git');
+const path = require('path');
 
 const app = express();
-
 
 app.use(express.static(__dirname));
 app.use(express.json());
@@ -31,7 +32,23 @@ function loadEndpoints() {
 
 function saveEndpoints() {
     fs.writeFileSync(ENDPOINTS_FILE, JSON.stringify(endpoints, null, 2));
+    // Commit and push to GitHub after saving endpoints
+    commitAndPushToGitHub();
 }
+
+async function commitAndPushToGitHub() {
+    const git = simpleGit();
+
+    try {
+        await git.add(ENDPOINTS_FILE);
+        await git.commit('Updated endpoints list');
+        await git.push('origin', 'main');  // Push to the main branch of the 'origin' remote
+        console.log('Changes pushed to GitHub successfully!');
+    } catch (error) {
+        console.error('Error pushing changes to GitHub:', error);
+    }
+}
+
 
 async function checkEndpoint(url) {
     const startTime = Date.now();
@@ -158,4 +175,3 @@ const port = process.env.PORT || 3000; // Use Heroku's port
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
-
