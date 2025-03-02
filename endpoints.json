@@ -9,7 +9,6 @@
   "https://www.apple.com",
   "https://api.fakewebsite.test",
   "https://fetch.com/nonexistentpage",
-  "https://www.paypal.com",
   "https://www.cnn.com",
   "https://www.bbc.com",
   "https://www.github.com",
@@ -24,5 +23,6 @@
   "https://mail.google.com",
   "https://reqres.in/api/users/2",
   "https://ipinfo.io/json",
-  "https://ipapi.co/json/"
+  "https://ipapi.co/json/",
+  "https://chatgpt.com"
 ]
