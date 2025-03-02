@@ -4,5 +4,6 @@
   "https://www.github.com",
   "https://expired.badssl.com",
   "https://www.bbc.com",
-  "https://httpstat.us/500"
+  "https://httpstat.us/500",
+  "https://httpstat.us/200"
 ]
