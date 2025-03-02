@@ -1,5 +1,6 @@
 [
   "https://www.apple.com",
   "https://expired.badssl.com",
-  "https://example.com"
+  "https://example.com",
+  "https://httpstat.us/500"
 ]
