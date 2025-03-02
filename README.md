@@ -1,4 +1,4 @@
-# Health-Check-Monitor-for-HTTP-Endpoints
+# Health-Check-Monitor-for-HTTP-Endpoints.
 
 This program checks the health of a set of HTTP endpoints specified in a YAML configuration file. It monitors the endpoints every 15 seconds and logs their availability percentages to the console.
 
