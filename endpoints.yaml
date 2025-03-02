@@ -1,0 +1,26 @@
+# List of HTTP endpoints to monitor
+- headers:
+    user-agent: fetch-synthetic-monitor  # User-Agent header for requests
+  method: GET                             # HTTP method for the request
+  name: fetch index page                  # Name of the endpoint for identification
+  url: https://fetch.com/                 # URL of the endpoint
+
+- headers:
+    user-agent: fetch-synthetic-monitor
+  method: GET
+  name: fetch careers page
+  url: https://fetch.com/careers          # Another endpoint to monitor
+
+- body: '{"foo":"bar"}'                   # JSON body for POST requests
+  headers:
+    content-type: application/json         # Content-Type header for POST request
+    user-agent: fetch-synthetic-monitor
+  method: POST
+  name: fetch some fake post endpoint
+  url: https://fetch.com/some/post/endpoint
+
+- headers:
+    user-agent: fetch-synthetic-monitor
+  method: GET
+  name: fetch rewards index page
+  url: https://www.fetchrewards.com/      # Yet another endpoint to monitor

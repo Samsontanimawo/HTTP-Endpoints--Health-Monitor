@@ -1,0 +1,32 @@
+# List of HTTP endpoints to monitor
+- headers:
+    user-agent: github-synthetic-monitor  # Custom User-Agent for requests
+  method: GET
+  name: GitHub Homepage
+  url: https://github.com/                # GitHub main website
+
+- headers:
+    user-agent: github-synthetic-monitor
+  method: GET
+  name: GitHub Explore Page
+  url: https://github.com/explore         # Explore section
+
+- headers:
+    user-agent: github-synthetic-monitor
+  method: GET
+  name: GitHub API Docs
+  url: https://docs.github.com/en/rest    # API documentation page
+
+- headers:
+    user-agent: github-synthetic-monitor
+  method: GET
+  name: GitHub Jobs Page
+  url: https://github.com/about/careers   # Careers section
+
+- body: '{"query":"test"}'                # JSON body for a POST request
+  headers:
+    content-type: application/json
+    user-agent: github-synthetic-monitor
+  method: POST
+  name: GitHub Fake API Request
+  url: https://api.github.com/fake-endpoint  # Example endpoint for testing
