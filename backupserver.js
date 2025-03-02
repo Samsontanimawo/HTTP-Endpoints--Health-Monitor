@@ -3,17 +3,15 @@ const axios = require('axios');
 const fs = require('fs');
 const { Parser } = require('json2csv');
 const PDFDocument = require('pdfkit');
-const simpleGit = require('simple-git');
 
 const app = express();
-const git = simpleGit();
+
 
 app.use(express.static(__dirname));
 app.use(express.json());
 
 const ENDPOINTS_FILE = 'endpoints.json';
 const CHECK_INTERVAL = 1000; // Check every second
-const GITHUB_REPO_DIR = './'; // Local directory of your GitHub repo
 
 // Load saved endpoints from file
 let endpoints = loadEndpoints();
@@ -33,7 +31,6 @@ function loadEndpoints() {
 
 function saveEndpoints() {
     fs.writeFileSync(ENDPOINTS_FILE, JSON.stringify(endpoints, null, 2));
-    pushToGitHub(); // Push changes after saving
 }
 
 async function checkEndpoint(url) {
@@ -92,28 +89,11 @@ app.post('/add-endpoint', (req, res) => {
 
 app.post('/remove-endpoint', (req, res) => {
     const { url } = req.body;
-    if (endpoints.includes(url)) {
-        endpoints = endpoints.filter(endpoint => endpoint !== url);
-        saveEndpoints();
-        stopMonitoring(url);
-        res.json({ message: 'Endpoint removed successfully!' });
-    } else {
-        res.status(400).json({ error: 'Endpoint not found' });
-    }
+    endpoints = endpoints.filter(endpoint => endpoint !== url);
+    saveEndpoints();
+    stopMonitoring(url);
+    res.json({ message: 'Endpoint removed successfully!' });
 });
-
-// Push changes to GitHub
-async function pushToGitHub() {
-    try {
-        await git.cwd(GITHUB_REPO_DIR);
-        await git.add(ENDPOINTS_FILE);
-        await git.commit('Update endpoints');
-        await git.push('origin', 'main'); // Or the branch you're using
-        console.log('Endpoints pushed to GitHub');
-    } catch (error) {
-        console.error('Error pushing to GitHub:', error);
-    }
-}
 
 app.get('/health', (req, res) => {
     const results = endpoints.map(url => {
@@ -178,3 +158,4 @@ const port = process.env.PORT || 3000; // Use Heroku's port
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+

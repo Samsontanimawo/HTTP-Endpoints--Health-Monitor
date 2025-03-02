@@ -11,12 +11,12 @@
   "author": "Samson Tanimawo",
   "license": "ISC",
   "dependencies": {
+    "@octokit/rest": "^21.1.1",
     "axios": "^1.8.1",
     "express": "^4.21.2",
     "js-yaml": "^4.1.0",
     "json2csv": "^6.0.0-alpha.2",
     "pdfkit": "^0.16.0",
-    "simple-git": "^3.27.0",
-    "socket.io": "^4.8.1"
+    "simple-git": "^3.27.0"
   }
 }
