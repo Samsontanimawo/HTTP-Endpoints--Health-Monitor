@@ -1,6 +1,7 @@
 [
   "https://www.apple.com",
-  "https://www.amazon.com",
   "https://expired.badssl.com",
-  "https://www.reddit.com"
+  "https://www.reddit.com",
+  "https://www.dropbox.com",
+  "https://www.google.com"
 ]
