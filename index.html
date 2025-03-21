@@ -1,37 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character encoding for the page -->
     <meta charset="UTF-8">
+    
+    <!-- Ensures the page is responsive on mobile devices by setting viewport properties -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- The title of the webpage that will be shown on the browser tab -->
     <title>Real-time Health Monitor</title>
+
+    <!-- Linking external CSS file for styling the page -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Main header of the page with a title and some fun emojis to represent the project -->
     <h1>🚀 Website & API Health Monitor 🌍📡</h1>
 
-    <input type="text" id="urlInput" placeholder="Enter website URL (e.g., https://fetch.com)">
+    <!-- Input field for entering the website URL that you want to monitor -->
+    <input type="text" id="urlInput" placeholder="Enter website URL (e.g., https://www.google.com)">
+    
+    <!-- Button to add the entered URL to the list of monitored endpoints -->
     <button id="addEndpointBtn">Add Endpoint</button>
 
+    <!-- Section header for the health status of the monitored websites -->
     <h2>Health Status</h2>
+    
+    <!-- This div will dynamically display the results (health status) of monitored endpoints -->
     <div id="results"></div>
 
-    <!-- Export buttons -->
+    <!-- Container for the export buttons -->
     <div class="export-buttons">
+        <!-- Button to trigger export as CSV file -->
         <button id="exportCsvBtn">Export as CSV</button>
+
+        <!-- Button to trigger export as PDF file -->
         <button id="exportPdfBtn">Export as PDF</button>
     </div>
 
+    <!-- Footer with a small credit for the project author -->
     <footer>
         <p>Project by Samson Tanimawo</p>
     </footer>
 
+    <!-- Linking external JavaScript file that contains the logic for fetching, adding, and removing endpoints -->
     <script src="script.js"></script>
 
+    <!-- Inline JavaScript to handle the export button click events -->
     <script>
+        // When the "Export as CSV" button is clicked, open the '/export-csv' route to trigger CSV export
         document.getElementById('exportCsvBtn').onclick = function() {
             window.open('/export-csv');
         };
 
+        // When the "Export as PDF" button is clicked, open the '/export-pdf' route to trigger PDF export
         document.getElementById('exportPdfBtn').onclick = function() {
             window.open('/export-pdf');
         };
